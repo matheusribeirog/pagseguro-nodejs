@@ -8,18 +8,69 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <form action="/finalizar" method="POST">
-        <label for="">Nome:</label>
-        <input type="text" name="nome">
-        <label for="">Email:</label>
-        <input type="text" name="email">
-        <label for="">Numero do cartão:</label>
-        <input type="text" name="cartao">
-        <label for="">CVV:</label>
-        <input type="text" name="cvv">
-        <label for="">Data:</label>
-        <input type="text" name="data">
-        <button type="submit">Finalizar compra</button>
-    </form>
+        <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="https://logodownload.org/wp-content/uploads/2016/09/pagseguro-logo-2.png" width="200px" class="d-inline-block align-top" alt="">
+                
+                </a>
+            </nav>
+    
+
+    <div class="container">
+        <div class="py-5 text-center">
+          <h2>Dados de Pagamento</h2>
+          <p class="lead">Digite abaixo os dados para a finalização da compra e do pagamento.</p>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Dados Comprador</h4>
+            <form class="needs-validation" action="/finalizar" method="POST" >
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">Nome</label>
+                  <input class="form-control" type="text" name="nome"required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Email</label>
+                  <input class="form-control"  type="text" name="email" required>
+                </div>
+              </div>
+    
+                  
+              <hr class="mb-4">
+              
+      
+              <h4 class="mb-3">Inserir Cartão</h4>
+    
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="cc-name">Número do Cartão</label>
+                  <input type="text" name="cartao" class="form-control" required>
+                  <small class="text-muted">Full name as displayed on card</small>
+                 
+                </div>
+            
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">Expiração</label>
+                  <input type="text" name="data" class="form-control" required>
+                 
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="cc-cvv">CVV</label>
+                  <input type="text" name="cvv" class="form-control" required>
+                  
+                </div>
+              </div>
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Finalizar compra</button>
+            </form>
+          </div>
+        </div>
+      
+        
+      </div>
 </body>
 </html>
