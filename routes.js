@@ -6,7 +6,12 @@ app.get('/', function(req,res){
     res.render('index')
 })
 
-app.post('/infos',comprarController.criaruser)
+app.post('/adicionar',comprarController.adicionar)
+app.get('/usuario',comprarController.usuario)
+app.post('/finalizar',comprarController.finalizar)
 
+app.get('/sucesso',function(req,res){
+    res.render('sucesso.ejs')
+})
 
 module.exports=app;

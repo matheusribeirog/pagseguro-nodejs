@@ -10,18 +10,6 @@ var pagseguro = new PagSeguro({
 pagseguro.currency('BRL');
 pagseguro.reference('REFERENCE_CODE');
 
-/* Opcional */
-pagseguro.redirect('http://www.example.com/callback');
-pagseguro.notify('http://www.example.com/notify');
-
-/* Produtos */
-pagseguro.addItem({
-    id: '1',
-    description: 'produto',
-    amount: '40.00',
-    quantity: '1'
-});
-
 pagseguro.sender({
     name: 'Matheus Ribeiro',
     email: 'matheus@gmail.com',
@@ -33,13 +21,54 @@ pagseguro.sender({
 
 
 module.exports={
-    criaruser(req,res){
+    adicionar(req,res){
+        pagseguro.addItem({
+            id: '1',
+            description: 'produto1',
+            amount: '40.00',
+            quantity: '1'
+        });
+        res.redirect('/')
+          return console.log("item adicionado");
+          
+        },
+
+    finalizar(req,res){
+        const tudo=req.body;
+        console.log(tudo);
+        res.redirect('/sucesso')
+        pagseguro.shipping({
+            type: 1,
+            name: req.body.nome,
+            email: req.body.email,
+            card:req.body.cartao,
+            cvv:req.body.cvv,
+            date:req.body.data,
+            address: {
+                street: 'Rua Do 10',
+                number: '10',
+                city: 'Cidade nota 10',
+                state: 'SP',
+                country: 'BRA'
+            }
+            
+        });
+        
+        pagseguro.checkout(function(success, response) {
+            if (success) {
+                console.log('Success');
+                console.log(response);
+            } else {
+                console.log('Error');
+                console.error(response);
+            }
+            
+        });
+        res.send(console.log("sucesso"))
        
-        const name= req.body.name
-        const email= req.body.email
-        const street= req.body.rua
-        const  number=  req.body.numero
-        const  city=  req.body.cidade
-           
-        }
+    },
+    usuario(req,res){
+        res.render('usuario')
+
+    }
 }
