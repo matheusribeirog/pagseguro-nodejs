@@ -1,8 +1,8 @@
 var PagSeguro = require('pagseguro-nodejs');
 
 var pagseguro = new PagSeguro({
-    email: 'matheus.gomes94@etec.sp.gov.br',
-    token: '8E1CDBAB4F634769958629578ED3DCB5',
+    email: 'Insert Your Email Here',
+    token: 'Insert your token here',
     mode: PagSeguro.MODE_SANDBOX,
     debug: true
 });
