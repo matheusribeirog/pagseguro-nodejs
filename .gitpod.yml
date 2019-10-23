@@ -1,6 +1,6 @@
 tasks:
   - init: npm install
-    command: npm ./server.js
+    command: npm run dev
 # Ports to expose on workspace startup (optional)
 ports:
   - port: 3000
